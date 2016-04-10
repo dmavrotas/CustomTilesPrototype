@@ -19,15 +19,15 @@ namespace CustomTilesPrototype.ViewModels
 
         #region Members
 
-        private IList<Tile> _tiles;
+        private Tile _tile;
 
-        public IList<Tile> Tiles
+        public Tile Tile
         {
-            get { return _tiles; }
+            get { return _tile; }
             set
             {
-                _tiles = value;
-                NotifyPropertyChanged("Tiles");
+                _tile = value;
+                NotifyPropertyChanged("Tile");
             }
         }
 
@@ -48,7 +48,7 @@ namespace CustomTilesPrototype.ViewModels
 
         public GenericTileViewModel()
         {
-
+            Tile = new Tile(1, "A nice tile", null, "some data", "some more data");
         }
 
         #endregion

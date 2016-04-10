@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using CustomTilesPrototype.ViewModels;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,18 @@ namespace CustomTilesPrototype.Controls
             }
         }
 
+        private GenericTileViewModel _viewModel;
+
+        public GenericTileViewModel ViewModel
+        {
+            get { return _viewModel; }
+            set
+            {
+                _viewModel = value;
+                NotifyPropertyChanged("ViewModel");
+            }
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Members
@@ -55,6 +68,7 @@ namespace CustomTilesPrototype.Controls
         {
             InitializeComponent();
             InitializeProperties();
+            DataContext = ViewModel;
         }
 
         #endregion
@@ -63,6 +77,7 @@ namespace CustomTilesPrototype.Controls
 
         private void InitializeProperties()
         {
+            ViewModel = new GenericTileViewModel();
             TileClicked = new RelayCommand<short>(PerformClick);
         }
 
