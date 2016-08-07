@@ -10,6 +10,6 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="Transparent">
         <Controls:GenericTile HorizontalAlignment="Left" 
-                              Margin="100,100,100,100" VerticalAlignment="Top"/>
+                              Margin="100,50,50,0" VerticalAlignment="Top" Height="204" Width="390"/>
     </Grid>
 </Window>

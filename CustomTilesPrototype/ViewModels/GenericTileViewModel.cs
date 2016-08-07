@@ -1,7 +1,11 @@
 ﻿using CustomTilesPrototype.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace CustomTilesPrototype.ViewModels
 {
@@ -31,6 +35,18 @@ namespace CustomTilesPrototype.ViewModels
             }
         }
 
+        private RelayCommand _tileClicked;
+
+        public RelayCommand TileClicked
+        {
+            get { return _tileClicked; }
+            set
+            {
+                _tileClicked = new RelayCommand(ClickTile);
+                NotifyPropertyChanged("TileClicked");
+            }
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Members
@@ -48,14 +64,18 @@ namespace CustomTilesPrototype.ViewModels
 
         public GenericTileViewModel()
         {
-            Tile = new Tile(1, "A nice tile", null, "some data", "some more data");
+            TileClicked = new RelayCommand(ClickTile);
+            Tile = new Tile(1, "A nice tile", new BitmapImage(new Uri(@"\Assets\test.png", UriKind.Relative)), "some data", "some more data", new SolidColorBrush(Colors.Orange));
         }
 
         #endregion
 
         #region Events
 
+        private void ClickTile()
+        {
 
+        }
 
         #endregion
     }

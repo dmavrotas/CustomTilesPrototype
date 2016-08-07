@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace CustomTilesPrototype.Models
@@ -35,9 +36,9 @@ namespace CustomTilesPrototype.Models
             }
         }
 
-        private BitmapImage _tileImage;
+        private ImageSource _tileImage;
 
-        public BitmapImage TileImage
+        public ImageSource TileImage
         {
             get { return _tileImage; }
             set
@@ -71,6 +72,18 @@ namespace CustomTilesPrototype.Models
             }
         }
 
+        private Brush _backgroundColor;
+
+        public Brush BackgroundColor
+        {
+            get { return _backgroundColor; }
+            set
+            {
+                _backgroundColor = value;
+                NotifyPropertyChanged("BackgroundColor");
+            }
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Members
@@ -79,20 +92,21 @@ namespace CustomTilesPrototype.Models
 
         private void NotifyPropertyChanged(string info)
         {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(info));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
 
         #endregion
 
         #region Constructors
 
-        public Tile(short id, string title, BitmapImage image, string data1, string data2)
+        public Tile(short id, string title, ImageSource image, string data1, string data2, Brush color)
         {
             ID = id;
             TileTitle = title;
             TileImage = image;
             TileData1 = data1;
             TileData2 = data2;
+            BackgroundColor = color;
         }
 
         #endregion
