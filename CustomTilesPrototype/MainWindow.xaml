@@ -7,9 +7,10 @@
         xmlns:Controls="clr-namespace:CustomTilesPrototype.Controls" x:Class="CustomTilesPrototype.MainWindow"
         mc:Ignorable="d"
         Background='White'
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="1200">
     <Grid Background="Transparent">
-        <Controls:GenericTile HorizontalAlignment="Left" 
-                              Margin="100,50,50,0" VerticalAlignment="Top" Height="204" Width="390"/>
+        <Controls:DashboardControl HorizontalAlignment="Left" 
+                                    Margin="10,50,50,0" VerticalAlignment="Top"
+                                   Height="500" Width="1000"/>
     </Grid>
 </Window>
